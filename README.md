@@ -421,17 +421,36 @@ modules/*               = componentes reutilizáveis
 
 ---
 
-## 13. Próximos passos
+## 13. Trilha de evolução avançada
 
-Depois deste tutorial, evolua para:
+Depois deste tutorial, a evolução natural é transformar este laboratório em uma plataforma corporativa de IaC. O roadmap recomendado é:
 
-1. Terragrunt para orquestração multiambiente
-2. HCP Terraform ou Terraform Enterprise
-3. AWS Organizations e multi-account landing zone
-4. SCPs e permission boundaries
-5. Argo CD / GitOps para workloads em Kubernetes
-6. OPA/Sentinel com políticas corporativas
-7. Drift detection recorrente
-8. Cost estimation com Infracost
-9. Pipeline com aprovações por ambiente
-10. Módulos publicados em registry privado
+1. **Terragrunt para orquestração multiambiente**  
+   Usar Terragrunt para reduzir repetição entre ambientes, centralizar configuração de backend, padronizar providers e organizar dependências entre stacks.
+
+2. **HCP Terraform ou Terraform Enterprise**  
+   Evoluir de execução local/GitHub Actions para execução remota, gestão de workspaces, políticas, RBAC, run tasks, approvals e auditoria centralizada.
+
+3. **AWS Organizations e landing zone multi-account**  
+   Separar workloads por contas AWS, como `shared-services`, `network`, `security`, `dev`, `staging` e `prod`, reduzindo blast radius e melhorando governança.
+
+4. **SCPs e permission boundaries**  
+   Aplicar guardrails organizacionais com Service Control Policies e permission boundaries para impedir ações proibidas mesmo quando roles locais têm permissões amplas.
+
+5. **Argo CD / GitOps para workloads em Kubernetes**  
+   Usar Terraform para provisionar a infraestrutura base e GitOps para controlar o ciclo de vida de aplicações Kubernetes.
+
+6. **OPA/Sentinel com políticas corporativas**  
+   Substituir validações simples por políticas formais: tags obrigatórias, regiões permitidas, tipos de instância aprovados, criptografia obrigatória e bloqueio de recursos públicos.
+
+7. **Drift detection recorrente**  
+   Rodar `terraform plan` periodicamente para detectar mudanças feitas fora do Terraform e gerar alertas antes que o ambiente fique inconsistente.
+
+8. **Cost estimation com Infracost**  
+   Adicionar estimativa de custo no pull request para que mudanças de infraestrutura sejam avaliadas tecnicamente e financeiramente antes do merge.
+
+9. **Pipeline com aprovações por ambiente**  
+   Exigir aprovação manual para `prod`, com ambientes protegidos no GitHub, revisores obrigatórios e separação clara entre plan e apply.
+
+10. **Módulos publicados em registry privado**  
+    Evoluir os módulos locais para um registry privado, com versionamento semântico, changelog, documentação e contrato estável para múltiplos times.
