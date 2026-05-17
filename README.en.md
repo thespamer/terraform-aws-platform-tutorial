@@ -421,16 +421,39 @@ modules/*               = reusable components
 
 ---
 
-## 13. Recommended next steps
+## 13. Advanced evolution roadmap
 
-After this tutorial, evolve toward:
+After this tutorial, the natural next step is to evolve this lab into a corporate-grade IaC platform. The recommended roadmap is:
 
-1. Terragrunt for multi-environment orchestration
-2. HCP Terraform or Terraform Enterprise
-3. AWS Organizations and multi-account landing zone
-4. SCPs and permission boundaries
-5. Argo CD / GitOps for Kubernetes workloads
-6. OPA/Sentinel with corporate policies
+1. **Terragrunt for multi-environment orchestration**  
+   Use Terragrunt to reduce duplication across environments, centralize backend configuration, standardize providers, and organize dependencies between stacks.
+
+2. **HCP Terraform or Terraform Enterprise**  
+   Move from local/GitHub Actions execution to remote execution, workspace management, policies, RBAC, run tasks, approvals, and centralized auditability.
+
+3. **AWS Organizations and multi-account landing zone**  
+   Separate workloads across AWS accounts such as `shared-services`, `network`, `security`, `dev`, `staging`, and `prod`, reducing blast radius and improving governance.
+
+4. **SCPs and permission boundaries**  
+   Apply organizational guardrails with Service Control Policies and permission boundaries to prevent prohibited actions even when local roles have broad permissions.
+
+5. **Argo CD / GitOps for Kubernetes workloads**  
+   Use Terraform to provision the base infrastructure and GitOps to control the lifecycle of Kubernetes applications.
+
+6. **OPA/Sentinel with corporate policies**  
+   Replace simple validations with formal policies: required tags, allowed regions, approved instance types, mandatory encryption, and public resource restrictions.
+
+7. **Recurring drift detection**  
+   Run `terraform plan` periodically to detect changes made outside Terraform and generate alerts before the environment becomes inconsistent.
+
+8. **Cost estimation with Infracost**  
+   Add cost estimation to pull requests so infrastructure changes are reviewed both technically and financially before merge.
+
+9. **Pipeline with environment approvals**  
+   Require manual approval for `prod`, with protected GitHub environments, mandatory reviewers, and clear separation between plan and apply.
+
+10. **Modules published in a private registry**  
+    Evolve local modules into a private registry, with semantic versioning, changelog, documentation, and stable contracts for multiple teams.
 7. Recurring drift detection
 8. Cost estimation with Infracost
 9. Pipeline with environment approvals
