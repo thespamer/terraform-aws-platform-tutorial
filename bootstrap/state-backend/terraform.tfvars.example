@@ -1,0 +1,12 @@
+aws_region        = "us-east-1"
+state_bucket_name = "CHANGE-ME-terraform-state-123456789"
+github_org_or_user = "CHANGE-ME-GITHUB-USER-OR-ORG"
+github_repo        = "terraform-aws-platform-tutorial"
+allowed_branch     = "main"
+
+tags = {
+  Project     = "terraform-aws-platform-tutorial"
+  Environment = "bootstrap"
+  Owner       = "platform-team"
+  CostCenter  = "engineering"
+}

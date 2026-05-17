@@ -1,0 +1,35 @@
+# Terraform
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
+
+# Plans
+*.tfplan
+plan.out
+plan.json
+
+# Variables with secrets
+*.auto.tfvars
+*.auto.tfvars.json
+terraform.tfvars
+terraform.tfvars.json
+*.tfvars
+!*.tfvars.example
+
+# Tools
+.tflint.d
+.checkov
+.trivycache
+
+# OS/editor
+.DS_Store
+.vscode/
+.idea/
